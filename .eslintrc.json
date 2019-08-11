@@ -1,0 +1,48 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:flowtype/recommended",
+        "plugin:prettier/recommended",
+        "plugin:react/recommended",
+        "prettier",
+        "prettier/flowtype",
+        "prettier/react"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2019,
+        "sourceType": "module"
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+        "prettier",
+        "react-hooks",
+        "flowtype",
+        "react"
+    ],
+    "settings": {
+        "react": {
+            "version": "16.8.6",
+            "flowVersion": "0.104.0",
+            "pragma": "React"
+        }
+    },
+    "rules": {
+        "quotes": ["error", "single"],
+        "prettier/prettier": [
+          "warn",
+          {
+            "endOfLine": "auto",
+            "printWidth": 100,
+            "singleQuote": true,
+            "trailingComma": "all"
+          }
+        ]
+    }
+}

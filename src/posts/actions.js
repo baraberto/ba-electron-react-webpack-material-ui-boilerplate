@@ -12,6 +12,8 @@ type FetchPostsAction = {
   payload: Array<PostType>,
 };
 
+export type PostsActions = FetchPostsAction;
+
 export const fetchPosts = () => async (dispatch: Dispatch<FetchPostsAction>) => {
   const res = await fetch('http://jsonplaceholder.typicode.com/posts', {
     Headers: {

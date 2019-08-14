@@ -5,14 +5,18 @@ import TopBar from './TopBar';
 import MiniDrawer from './MiniDrawer';
 import UserMenu from './user/UserMenu';
 import Routes from '../routes';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    flexGrow: 1,
   },
-  content: {
-    marginTop: theme.spacing(8),
-    marginLeft: theme.spacing(1),
+  giveSpace: {
+    top: theme.spacing(8),
+    left: theme.spacing(8),
+    position: 'absolute',
+    width: `calc(100% - ${theme.spacing(8)}px)`,
   },
 }));
 
@@ -35,10 +39,12 @@ const App = () => {
         menuId={menuId}
       />
       <MiniDrawer open={open} handleDrawerClose={handleDrawerClose} />
-      <div className={classes.content}>
-        <Routes />
-      </div>
       <UserMenu userMenuAnchorEl={anchorEl} closeProfileMenu={closeProfileMenu} menuId={menuId} />
+      <div className={classes.giveSpace}>
+        <Container>
+          <Routes />
+        </Container>
+      </div>
     </div>
   );
 };

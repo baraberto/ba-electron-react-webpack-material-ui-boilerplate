@@ -10,13 +10,10 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import PeopleIcon from '@material-ui/icons/People';
+import FolderIcon from '@material-ui/icons/Folder';
 
 import ListItemLink from '../common/ListItemLink';
 
@@ -96,6 +93,10 @@ const MiniDrawer = ({
       </List>
       <List>
         <ListItemLink to="/users" icon={<PeopleIcon />} primary="Utilizadores" />
+      </List>
+      <Divider />
+      <List>
+        <ListItemLink to="/sys" icon={<FolderIcon />} primary="Blog" />
       </List>
     </Drawer>
   );

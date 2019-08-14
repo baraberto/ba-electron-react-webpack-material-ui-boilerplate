@@ -16,6 +16,8 @@ type LoadingAction = {
   payload: { id: number },
 };
 
+export type UserActions = FetchUsersAction | FetchUserAction | LoadingAction;
+
 export type UserType =
   | {
       id: number,

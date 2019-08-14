@@ -31,27 +31,15 @@ if (process.platform === 'win32') {
 
 function createWindow() {
   // Create the browser window.
-  if (dev) {
-    mainWindow = new BrowserWindow({
-      width: 1150 + 571,
-      height: 580,
-      show: false,
-      resizable: false,
-      webPreferences: {
-        nodeIntegration: true,
-      },
-    });
-  } else {
-    mainWindow = new BrowserWindow({
-      width: 1150,
-      height: 580,
-      show: false,
-      resizable: false,
-      webPreferences: {
-        nodeIntegration: true,
-      },
-    });
-  }
+  mainWindow = new BrowserWindow({
+    width: 1150,
+    height: 580,
+    show: false,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
 
   // and load the index.html of the app.
   let indexPath;
@@ -79,7 +67,7 @@ function createWindow() {
 
     // Open the DevTools automatically if developing
     if (dev) {
-      mainWindow.webContents.openDevTools();
+      mainWindow.webContents.openDevTools({ mode: 'detach' });
     }
   });
 

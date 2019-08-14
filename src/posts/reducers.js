@@ -1,9 +1,6 @@
 // @flow
 
-export type PostType = {
-  title: string,
-  body: string,
-};
+import type { PostType } from './actions';
 
 export default (
   state: Array<PostType> = [],

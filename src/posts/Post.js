@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import UserInline from '../users/UserInline';
-import type { PostType } from './reducers';
+import type { PostType } from './actions';
 
 const useStyles = makeStyles(theme => ({
   card: {

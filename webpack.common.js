@@ -2,6 +2,9 @@ const path = require('path');
 const defaultInclude = path.resolve(__dirname, 'src');
 
 module.exports = {
+  resolve: {
+    mainFields: ['module', 'main'],
+  },
   module: {
     rules: [
       {

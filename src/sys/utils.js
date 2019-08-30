@@ -4,9 +4,8 @@ import { sep, join } from 'path';
 import { promises as fsPromises } from 'fs';
 import os from 'os';
 import crypto from 'crypto';
-import jimp from 'jimp';
+import { ipcRenderer } from 'electron';
 
-const temp = os.tmpdir();
 const homedir = os.homedir();
 
 export const genHash = (f: any): string => {
@@ -39,12 +38,6 @@ export const normalize = (p: Array<string>) => {
   return sep === '/' ? ['/', ...pa.split(sep)] : pa.split(sep);
 };
 
-const mimeConvert = {
-  png: jimp.MIME_PNG,
-  jpg: jimp.MIME_JPG,
-  bmp: jimp.MIME_BMP,
-};
-
 export const getPreview = async (
   path: string,
   ext: string,
@@ -52,17 +45,9 @@ export const getPreview = async (
   width: number,
   height: number,
 ) => {
-  const thumb = join(temp, hash);
   try {
-    return await fsPromises.readFile(thumb);
+    return await await ipcRenderer.invoke('thumbnail-req', path, ext, hash, width, height);
   } catch (e) {
-    try {
-      const image = await jimp.read(path);
-      const converted = await image.resize(width, height).getBase64Async(mimeConvert[ext]);
-      await fsPromises.writeFile(thumb, converted);
-      return converted;
-    } catch (e) {
-      console.log(e);
-    }
+    console.log(e);
   }
 };

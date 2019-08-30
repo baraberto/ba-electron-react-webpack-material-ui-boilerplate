@@ -14,7 +14,7 @@ module.exports = {
       ...dotenv.config().parsed,
     }),
   ],
-  devtool: 'cheap-source-map',
+  devtool: 'source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     stats: {

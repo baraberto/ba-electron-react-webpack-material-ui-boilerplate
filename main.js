@@ -5,6 +5,7 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
 const dotenv = require('dotenv');
+const ipcgenThumbnail = require('./src/main/genThumbnail');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -38,6 +39,7 @@ function createWindow() {
     resizable: false,
     webPreferences: {
       nodeIntegration: true,
+      nodeIntegrationInWorker: true,
     },
   });
 
@@ -79,6 +81,7 @@ function createWindow() {
     // mainWindow.webContents.send('close_socket');
     mainWindow = null;
   });
+  ipcgenThumbnail();
 }
 
 // This method will be called when Electron has finished
@@ -102,3 +105,44 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+// const sharp = require('sharp');
+// const { join } = require('path');
+// const { pipeline: _pipeline } = require('stream');
+// const { promisify } = require('util');
+// const B64 = require('@hapi/b64');
+// const fs = require('fs');
+// const os = require('os');
+
+// const temp = os.tmpdir();
+// const toB64 = new B64.Encoder();
+// const pipeline = promisify(_pipeline);
+
+// ipcMain.handle('thumbnail-req', async (event, path, ext, hash, width, height) => {
+//   const result = await pipeline(
+//     fs.createReadStream(path),
+//     sharp({
+//       create: {
+//         width,
+//         height,
+//       },
+//     })
+//       .webp()
+//       .toBuffer(),
+//     toB64,
+//     fs.createWriteStream(join(temp, hash)),
+//   );
+//   return result;
+//   // const reader = fs.createReadStream(path);
+//   // const s = sharp({
+//   //   create: {
+//   //     width: 48,
+//   //     height: 48,
+//   //   },
+//   // })
+//   //   .webp()
+//   //   .toBuffer();
+//   // const writer = fs.createWriteStream(join(temp, hash));
+//   // reader.pipe(s).pipe(writer);
+//   // event.reply('thumbnail-done');
+// });

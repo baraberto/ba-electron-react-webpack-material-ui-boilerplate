@@ -6,6 +6,9 @@
 
 ## Electron, React, Webpack para começar o seu próximo mambo.
 
+
+Com React, comunicacao entre node e browser ipc, com ligacao a modulo nativo a C++ [`libvips`](https://github.com/libvips/libvips) pelo [`sharp`](https://github.com/lovell/sharp)
+
 Construir a sua aplicação com:
 - [React](https://reactjs.org) para construir a sua interface de forma declarativa, baseada em componentes [documentação](https://reactjs.org/docs/getting-started.html) [repositório](https://github.com/facebook/react/)
 
@@ -23,10 +26,21 @@ Construir a sua aplicação com:
 
 - [redux](https://redux.js.org/) caminhos para organizar as vistas [documentação](https://reacttraining.com/react-router/web/guides/quick-start) [repositório](https://github.com/ReactTraining/react-router)
 
+- [sharp](https://sharp.pixelplumbing.com/en/stable/) para transformar images [repositório](https://github.com/lovell/sharp)
 
 Instalar os tipos flow:
 ```bash
 flow-typed install -i dev -s
+```
+
+### Dependencias
+para o sharp funcionar
+
+instalar bibliotecas [requeridas](https://sharp.pixelplumbing.com/en/stable/install/) pelo `sharp`
+ e correr
+
+```
+./node_modules/.bin/electron-rebuild
 ```
 
 ### Índice
